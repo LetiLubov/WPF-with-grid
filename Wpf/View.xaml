@@ -1,0 +1,168 @@
+﻿<Window x:Class="Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:user="clr-namespace:Wpf"
+        Title="Ulmart Catalog"
+        Width="939.404"
+        Height="319.892">
+    <Window.DataContext>
+        <user:ViewModel />
+    </Window.DataContext>
+    <Grid Margin="0,0,10,7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Row="1"
+                 Width="174"
+                 Height="23"
+                 Margin="15,10,0,0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Text="{Binding Input}"
+                 TextWrapping="Wrap" />
+        <Button Grid.Row="1"
+                Grid.Column="1"
+                Width="75"
+                Height="22"
+                Margin="10,10,10,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Command="{Binding Find}"
+                Content="найти !" />
+
+
+
+        <Label Grid.Row="2"
+               Width="134"
+               Height="26"
+               Margin="10,5,10,5"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Информация о товаре" />
+        <Label Grid.Row="3"
+               Width="63"
+               Height="26"
+               Margin="10,5,10,5"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Название" />
+        <Label Grid.Row="4"
+               Width="38"
+               Height="26"
+               Margin="10,5,10,5"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Цена"
+               RenderTransformOrigin="0.508,1.962" />
+        <Label Grid.Row="5"
+               Width="95"
+               Height="28"
+               Margin="10,5,10,5"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Производитель"
+               RenderTransformOrigin="0.508,1.962" />
+        <Label Grid.Row="6"
+               Width="125"
+               Height="26"
+               Margin="10,5,10,5"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Страна изготовитель"
+               RenderTransformOrigin="0.508,1.962" />
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Width="45"
+                 Height="23"
+                 Margin="10,5,10,5"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 IsReadOnly="True"
+                 Text="{Binding OutputNumber}"
+                 TextWrapping="Wrap" />
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Width="135"
+                 Height="23"
+                 Margin="10,5,10,5"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 IsReadOnly="True"
+                 Text="{Binding OutputTitle}"
+                 TextWrapping="Wrap" />
+        <TextBox Grid.Row="4"
+                 Grid.Column="1"
+                 Width="76"
+                 Height="23"
+                 Margin="10,5,10,5"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 IsReadOnly="True"
+                 Text="{Binding OutputPrice}"
+                 TextWrapping="Wrap" />
+        <TextBox Grid.Row="5"
+                 Grid.Column="1"
+                 Width="135"
+                 Height="23"
+                 Margin="10,5,10,5"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 IsReadOnly="True"
+                 Text="{Binding OutputAuthor}"
+                 TextWrapping="Wrap" />
+        <TextBox Grid.Row="6"
+                 Grid.Column="1"
+                 Width="119"
+                 Height="23"
+                 Margin="10,5,10,5"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 IsReadOnly="True"
+                 Text="{Binding OutputCountry}"
+                 TextWrapping="Wrap" />
+        <Label Margin="20,10,10,10"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Какой товар вас интересует?" />
+        <ListView Grid.Row="2"
+                  Grid.RowSpan="5"
+                  Grid.Column="2"
+                  Width="535"
+                  Height="151"
+                  Margin="15,35,0,0"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  ItemsSource="{Binding ListShortInfo}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding RowNumber}" Header="№" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Название товара" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Author}" Header="Производитель" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Country}" Header="Страна" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Grid.Row="2"
+               Grid.RowSpan="5"
+               Grid.Column="3"
+               Margin="20,10,10,10"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Товары этого производителя" />
+
+    </Grid>
+</Window>
